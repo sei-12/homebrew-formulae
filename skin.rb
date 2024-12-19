@@ -1,3 +1,5 @@
+require "formula"
+
 class Skin < Formula
   desc "タグで検索を行うブックマークマネージャー"
   url "https://github.com/sei-12/skin/releases/tag/v0.1.5"
