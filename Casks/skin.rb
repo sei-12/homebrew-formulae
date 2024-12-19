@@ -14,7 +14,7 @@
 #   end
 # end
 
-cask "sample-app" do
+cask "skin" do
   version "0.1.5"
   sha256 "35bbcc106084b2cb703eeabc650bfc59db7b190eb007e8ad9b8ecd1b828a7db0"
   url "https://example.com/skin_#{version}_aarch64.dmg"
