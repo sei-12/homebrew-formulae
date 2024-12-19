@@ -1,11 +1,31 @@
-require "formula"
+# require "formula"
 
-class Skin < Formula
-  desc "タグで検索を行うブックマークマネージャー"
-  url "https://github.com/sei-12/skin/releases/tag/v0.1.5"
-  sha256 "5c2beb6629de908907685a5d9dc2f40131b4dacce1f5fd88d06af17dbdb380a8"
-  license "MIT" # プロジェクトのライセンスを記載
-  def install
-    bin.install "skin" # バイナリの名前に合わせる
-  end
+
+# class Skin < Formula
+#   desc "タグで検索を行うブックマークマネージャー"
+#   url "https://github.com/sei-12/skin/releases/download/v0.1.5.1/skin_0.1.5_aarch64.dmg"
+#   sha256 "35bbcc106084b2cb703eeabc650bfc59db7b190eb007e8ad9b8ecd1b828a7db0"
+#   license "MIT" # プロジェクトのライセンスを記載
+#   def install
+#       # DMGを展開してバイナリをインストール
+#       system "hdiutil", "attach", "skin_0.1.5_aarch64.dmg"
+#       bin.install "/Volumes/YourApp/YourApp.app/Contents/MacOS/your-app"
+#       system "hdiutil", "detach", "/Volumes/YourApp"
+#   end
+# end
+
+cask "sample-app" do
+  version "0.1.5"
+  sha256 "35bbcc106084b2cb703eeabc650bfc59db7b190eb007e8ad9b8ecd1b828a7db0"
+  url "https://example.com/skin_#{version}_aarch64.dmg"
+  name "skin"
+  desc "A sample application"
+  homepage "https://github.com/sei-12/skin"
+
+  app "skin.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.skin.app",
+    "~/Library/Preferences/com.example.sample-app.plist",
+  ]
 end
