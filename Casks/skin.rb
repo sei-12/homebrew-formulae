@@ -17,7 +17,7 @@
 cask "skin" do
   version "0.1.5"
   sha256 "35bbcc106084b2cb703eeabc650bfc59db7b190eb007e8ad9b8ecd1b828a7db0"
-  url "https://example.com/skin_#{version}_aarch64.dmg"
+  url "https://github.com/sei-12/skin/releases/download/v0.1.5.1/skin_0.1.5_aarch64.dmg"
   name "skin"
   desc "A sample application"
   homepage "https://github.com/sei-12/skin"
