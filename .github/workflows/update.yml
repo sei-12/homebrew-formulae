@@ -6,9 +6,10 @@ jobs:
   myEvent:
     runs-on: ubuntu-latest
     steps:
-      run: |
-        echo "Hello, ${{ github.event.client_payload.version }}"
-        echo "Hello, ${{ github.event.client_payload.sha }}"
+      - name: update
+        run: |
+          echo "Hello, ${{ github.event.client_payload.version }}"
+          echo "Hello, ${{ github.event.client_payload.sha }}"
       # - name: Checkout code
       #   uses: actions/checkout@v2
       #   with:
