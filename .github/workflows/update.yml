@@ -1,0 +1,40 @@
+name: Update Formula
+on:
+  repository_dispatch:
+    types: [update]
+jobs:
+  myEvent:
+    runs-on: ubuntu-latest
+    steps:
+      run: |
+        echo "Hello, ${{ github.event.client_payload.version }}"
+        echo "Hello, ${{ github.event.client_payload.sha }}"
+      # - name: Checkout code
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
+      # - name: Update formula file
+      #   run: |
+      #     VERSION=$(echo ${{ github.event.client_payload.ref  }} | sed -e "s#refs/tags/##g")
+      #     BINARY=${{ github.event.client_payload.binary }}
+      #     URL="https://github.com/Rasukarusan/$BINARY/releases/download/$VERSION/$BINARY"
+      #     data=$(cat <<EOF > Formula/$BINARY.rb
+      #       class ${{ github.event.client_payload.class }} < Formula
+      #         url "$URL"
+      #         sha256 "${{ github.event.client_payload.sha256 }}"
+      #         def install
+      #           bin.install "$BINARY"
+      #         end
+      #       end
+      #     EOF
+      #     )
+      # - name: Commit version change
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git add -A
+      #     git commit -m "update version"
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
