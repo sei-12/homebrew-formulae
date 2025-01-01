@@ -2,6 +2,12 @@ name: Update Formula
 on:
   repository_dispatch:
     types: [update-sample-tauri-app]
+
+permissions:
+  actions: write
+  checks: write
+  contents: write
+
 jobs:
   myEvent:
     runs-on: ubuntu-latest
