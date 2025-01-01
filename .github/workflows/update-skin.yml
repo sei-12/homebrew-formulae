@@ -1,7 +1,7 @@
 name: Update Formula
 on:
   repository_dispatch:
-    types: [update-sample-tauri-app]
+    types: [update-skin]
 
 permissions:
   actions: write
@@ -15,8 +15,6 @@ jobs:
       - name: update
         run: |
           echo "Hello, ${{ github.event.client_payload.version }}"
-          echo "Hello, ${{ github.event.client_payload.sha }}"
-          echo "URL: ${{ github.event.client_payload.upload_url }}"
       - name: Checkout code
         uses: actions/checkout@v2
         with:
