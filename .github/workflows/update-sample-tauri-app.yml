@@ -24,7 +24,7 @@ jobs:
       - name: Update formula file
         run: |
           VERSION=${{ github.event.client_payload.version }}
-          URL="https://github.com/sei-12/sample-tauri-app/releases/download/app-v$VERSION/sample-tauri-app$VERSION_aarch64.dmg"
+          URL="https://github.com/sei-12/sample-tauri-app/releases/download/app-v$VERSION/sample-tauri-app"$VERSION"_aarch64.dmg"
           data=$(cat <<EOF > Casks/sample-tauri-app.rb
               cask "sample-tauri-app" do 
                 version "$VERSION"
