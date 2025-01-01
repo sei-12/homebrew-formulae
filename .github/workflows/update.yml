@@ -10,6 +10,7 @@ jobs:
         run: |
           echo "Hello, ${{ github.event.client_payload.version }}"
           echo "Hello, ${{ github.event.client_payload.sha }}"
+          echo "URL: ${{ github.event.client_payload.url }}"
       # - name: Checkout code
       #   uses: actions/checkout@v2
       #   with:
