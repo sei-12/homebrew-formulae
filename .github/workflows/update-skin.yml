@@ -1,0 +1,55 @@
+name: Update Formula
+on:
+  repository_dispatch:
+    types: [update-sample-tauri-app]
+
+permissions:
+  actions: write
+  checks: write
+  contents: write
+
+jobs:
+  myEvent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: update
+        run: |
+          echo "Hello, ${{ github.event.client_payload.version }}"
+          echo "Hello, ${{ github.event.client_payload.sha }}"
+          echo "URL: ${{ github.event.client_payload.upload_url }}"
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Update formula file
+        run: |
+          VERSION=${{ github.event.client_payload.version }}
+          URL="https://github.com/sei-12/skin/releases/download/app-v$VERSION/skin_"$VERSION"_aarch64.dmg"
+          SHA=$(curl -sL $URL | openssl sha256 | awk '{print $2}')
+          data=$(cat <<EOF > Casks/skin.rb
+              cask "skin" do 
+                version "$VERSION"
+                sha256 "$SHA"
+                url "$URL"
+                name "skin"
+                desc "A sample application"
+                homepage "https://github.com/sei-12/skin"
+
+                app "skin.app"
+
+                zap trash: [
+                  "~/Library/Application Support/com.skin.app",
+                ]
+              end
+          EOF
+          )
+      - name: Commit version change
+        run: |
+          git config --local user.email "${{ secrets.EMAIL }}"
+          git config --local user.name "sei-12"
+          git add -A
+          git commit -m "Update version to ${{ github.event.client_payload.version }} for skin"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
