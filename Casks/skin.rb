@@ -1,7 +1,7 @@
     cask "skin" do 
-      version "1.0.6"
-      sha256 "a985f66070d607178f98492e580d82177bbfa88c1d7e5f192525e3b2b5ae3992"
-      url "https://github.com/sei-12/skin/releases/download/app-v1.0.6/skin_1.0.6_aarch64.dmg"
+      version "1.0.7"
+      sha256 "dbb9b9b43fb6db409fbf76ba5464bbe3ebe31b429ac71f6baf84ac40f536dac0"
+      url "https://github.com/sei-12/skin/releases/download/app-v1.0.7/skin_1.0.7_aarch64.dmg"
       name "skin"
       desc "A sample application"
       homepage "https://github.com/sei-12/skin"
